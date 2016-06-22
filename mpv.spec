@@ -28,11 +28,11 @@ output methods are supported.
 ./rebuild -j$(($(nproc)+1))
 
 %install
-mkdir -p %{buildroot}/usr/local/bin
-cp mpv/build/mpv %{buildroot}/usr/local/bin/
+mkdir -p %{buildroot}/usr/bin
+cp mpv/build/mpv %{buildroot}/usr/bin/
 
 %files
-/usr/local/bin/mpv
+/usr/bin/mpv
 
 %changelog
 * Wed Jun 22 2016 Martin Hagstrom <marhag87@gmail.com> 0.17.0-7635
