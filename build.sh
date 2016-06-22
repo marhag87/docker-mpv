@@ -1,7 +1,13 @@
 #!/bin/bash
+set -e
 
 dnf update -y
-cd mpv-build
+cd docker-mpv
 git pull
-./rebuild -j$(nproc)
-cp -f mpv/build/mpv /output/
+rpmdev-setuptree
+cp mpv.spec /root/rpmbuild/SPECS/
+cd /root/rpmbuild/SOURCES/
+wget $(awk '/Source/ {print $2}' ../SPECS/mpv.spec)
+cd ..
+rpmbuild -bb SPECS/mpv.spec
+cp -f RPMS/x86_64/mpv*.rpm /output/
